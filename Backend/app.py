@@ -2,16 +2,20 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pickle
 import os
+import joblib
 
 app = Flask(__name__)
 CORS(app)
 
-# Load pickle files instead of joblib
-with open("models/xgb_final_model.pkl", "rb") as f:
-    model = pickle.load(f)
 
-with open("models/tfidf_vectorizer.pkl", "rb") as f:
+with open("xgb_final_model.pkl", "rb") as f:
+    model = pickle.load(f)
+#
+with open("tfidf_vectorizer.pkl", "rb") as f:
     vectorizer = pickle.load(f)
+
+# final_modal = joblib.load("../models/xgb_final_model.joblib")
+# vectorizer = joblib.load("tfidf_vectorizer.joblib")
 
 @app.route("/predict", methods=["POST"])
 def predict():
