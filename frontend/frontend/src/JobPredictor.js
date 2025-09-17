@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./JobPredictor.css";
 
 function JobPredictor() {
   const [jobDescription, setJobDescription] = useState("");
@@ -11,7 +12,7 @@ function JobPredictor() {
       const res = await fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ job_description: jobDescription }), // 👈 same key as Flask
+        body: JSON.stringify({ job_description: jobDescription }),
       });
 
       const data = await res.json();
@@ -22,12 +23,11 @@ function JobPredictor() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="container">
       <h2>Fake Job Detection</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           rows="6"
-          cols="60"
           value={jobDescription}
           onChange={(e) => setJobDescription(e.target.value)}
           placeholder="Paste the job description here..."
@@ -37,9 +37,13 @@ function JobPredictor() {
       </form>
 
       {prediction && (
-        <h3 style={{ marginTop: "20px" }}>
-          Prediction: {prediction === "1" ? "Fake Job 🚨" : "Legit Job ✅"}
-        </h3>
+        <div
+          className={`result ${
+            String(prediction) === "1" ? "fake" : "legit"
+          }`}
+        >
+          Prediction: {String(prediction) === "1" ? "Fake Job 🚨" : "Legit Job ✅"}
+        </div>
       )}
     </div>
   );
