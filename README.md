@@ -85,3 +85,5 @@ These files are required by `Backend/app.py` and must be present in the `Backend
 ## Contributing
 - Open issues or PRs for fixes, model updates, or UX improvements.
 
+  ### deployement Link
+  https://fake-job-postings-detection.vercel.app/
