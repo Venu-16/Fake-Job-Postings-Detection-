@@ -11,12 +11,18 @@ function JobPredictor() {
     try {
       const res = await fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ job_description: jobDescription }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: jobDescription,   // FIXED
+        }),
       });
 
-      const data = await res.json();
-      setPrediction(data.prediction);
+      const data = await res.json();  // FIXED
+      console.log("API Response:", data);
+
+      setPrediction(data.prediction); // FIXED
     } catch (error) {
       console.error("Error:", error);
     }
@@ -36,13 +42,14 @@ function JobPredictor() {
         <button type="submit">Check Job</button>
       </form>
 
-      {prediction && (
+      {prediction !== "" && (
         <div
           className={`result ${
             String(prediction) === "1" ? "fake" : "legit"
           }`}
         >
-          Prediction: {String(prediction) === "1" ? "Fake Job 🚨" : "Legit Job ✅"}
+          Prediction:{" "}
+          {String(prediction) === "1" ? "Fake Job 🚨" : "Legit Job ✅"}
         </div>
       )}
     </div>
