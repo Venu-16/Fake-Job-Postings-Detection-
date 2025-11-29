@@ -85,13 +85,3 @@ These files are required by `Backend/app.py` and must be present in the `Backend
 ## Contributing
 - Open issues or PRs for fixes, model updates, or UX improvements.
 
-## License
-Add a license file if you plan to open-source this repository.
-
----
-If you'd like, I can:
-- Update the frontend to use a config/env variable for the API URL.
-- Add improved request validation and better JSON responses in the backend.
-- Add a minimal `Procfile` and instructions to deploy both services.
-
-Tell me which of these (or other tasks) you'd like next.
