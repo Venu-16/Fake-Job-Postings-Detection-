@@ -9,7 +9,7 @@ function JobPredictor() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/predict", {
+      const res = await fetch("https://fake-job-postings-detection-w807.onrender.com/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
