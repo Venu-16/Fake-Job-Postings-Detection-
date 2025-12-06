@@ -37,3 +37,8 @@
   object-fit: contain;
   border-radius: 8px;
 }
+
+.results-img:hover{
+    transform: scale(2);
+    z-index :10;
+}
